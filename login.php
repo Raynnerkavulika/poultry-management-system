@@ -1,4 +1,30 @@
+<?php
+include 'config.php';
 
+if(isset($_POST['submit'])){
+    
+    $email = $_POST['email'];
+    $email = filter_var($email,FILTER_SANITIZE_STRING);
+    $password = $_POST['password'];
+    $password = filter_var($password,FILTER_SANITIZE_STRING);
+    
+$select_user = $conn->prepare("SELECT * FROM `users` WHERE email = ? AND password = ?");
+$select_user->execute([$email,$password]);
+$row = $select_user->fetch(PDO::FETCH_ASSOC);
+
+if($select_user ->rowCount()>0){
+    if($row['user_type'] == 'admin'){
+        $_SESSION['admin'] = $row['id'];
+        header("location:dashboard.php");
+    }elseif($row['user_type'] == 'user'){
+        $_SESSION['user'] = $row['id'];
+        header("location:index.php");
+    }else{
+        echo'ooops!!You have entered wrong email or password';
+    }
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
