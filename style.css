@@ -21,3 +21,12 @@
     --box-shadow:#0 .1rem .5rem rgba(0,0,0,.1);
     --green:#27ae60;
 }
+
+body{
+    background-color: var(--light-bg);
+}
+
+::selection{
+    background-color: var(--blue);
+    color: var(--white);
+}
