@@ -52,6 +52,7 @@ html{
         background-color: var(--blue);
         color:var(--white);
 }
+
  ::-webkit-scrollbar{
      width: 1rem;
      height: .5rem;
