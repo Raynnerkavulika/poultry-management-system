@@ -79,3 +79,12 @@ html{
    }
 
 }
+
+@media (max-width:768px){
+}
+
+@media (max-width:450px){
+    html{
+      font-size: 50%;
+   }
+}
